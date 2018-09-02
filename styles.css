@@ -1,0 +1,41 @@
+.schedule_table {
+    border: 5px double #000;
+}
+.schedule_table td, .schedule_table th {
+    border: 1px solid #000;
+}
+.schedule_data {
+    border-bottom: 1px solid #000;
+}
+.add_one_more_customer {
+    cursor: pointer;
+    background: cadetblue;
+    border-radius: 2px;
+    padding: 5px 0px;
+    text-align: center;
+    margin: 5px 0px;
+    width: 100%;
+}
+.add_one_more_customer:hover {
+    color: aliceblue;
+}
+.main_form {
+    width: 25%;
+}
+.main_form h2 {
+    text-align: center;
+}
+.item {
+    display: inline-block;
+    margin-top: 5px;
+}
+.submit_button {
+    border-style: none;
+    padding: 5px;
+    width: 100%;
+    border-radius: 2px;
+    cursor: pointer;
+}
+h1 {
+    text-align: center;
+}
