@@ -1,22 +1,19 @@
 <?php
+namespace Database;
 
-class DB
+class Database
 {
     private static $_instance = null;
-
-    private static $host = 'localhost';
-    private static $database = 'schedule_local';
-    private static $user = 'root';
-    private static $password = '';
     
-    private function __construct () {        
-        $this->_instance = new PDO(
-            'mysql:host=' . self::$host . ';dbname=' . self::$database,
-            self::$user,
-            self::$password,
-            [PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
+    private function __construct () 
+    {        
+        require('/../config.php');
+
+        $this->_instance = new \PDO(
+            'mysql:host=' . $host . ';dbname=' . $database, $user, $password,
+            [\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+            \PDO::ATTR_EMULATE_PREPARES   => false,
             ]
         );
     }
@@ -40,11 +37,12 @@ class DB
     * @return array
     */
 
-    public function get_db_data($query, $const = '') {
+    public function get_db_data($query, $const = '') 
+    {
         if ($const == 'FETCH_COLUMN') {
-            $result = $this->_instance->query($query)->fetchAll(PDO::FETCH_COLUMN);
+            $result = $this->_instance->query($query)->fetchAll(\PDO::FETCH_COLUMN);
         } elseif ($const == 'FETCH_UNIQUE') {
-            $result = $this->_instance->query($query)->fetchAll(PDO::FETCH_UNIQUE);
+            $result = $this->_instance->query($query)->fetchAll(\PDO::FETCH_UNIQUE);
         }
 
         return $result;
@@ -57,13 +55,14 @@ class DB
     * @return array
     */
 
-    public function get_db_data_with_array($query, $query_array, $const = '') {
+    public function get_db_data_with_array($query, $query_array, $const = '') 
+    {
         $data = $this->_instance->prepare($query);
         $data->execute($query_array);
         if ($const == 'FETCH_COLUMN') {
-            $result = $data->fetchAll(PDO::FETCH_COLUMN);
+            $result = $data->fetchAll(\PDO::FETCH_COLUMN);
         } elseif ($const == 'FETCH_UNIQUE') {
-            $result = $data->fetchAll(PDO::FETCH_UNIQUE);
+            $result = $data->fetchAll(\PDO::FETCH_UNIQUE);
         }
     }
 
@@ -73,7 +72,8 @@ class DB
     * @return array
     */
 
-    public function insert_into_db($query, $params) {
+    public function insert_into_db($query, $params) 
+    {
         $data = $this->_instance->prepare($query);  
         $data->execute($params);
     }

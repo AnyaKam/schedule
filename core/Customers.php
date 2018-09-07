@@ -1,14 +1,17 @@
 <?php
+namespace Customers;
 
 class Customers {
     public $id = '';
     public $customer_name = '';
 
-    function __construct() {
+    function __construct() 
+    {
 
     }
 
-    static function get_customers() {
+    static function get_customers() 
+    {
         global $db;
         $query = 'SELECT * FROM `customers`';
         $customers_db = $db->get_db_data($query, 'FETCH_UNIQUE');

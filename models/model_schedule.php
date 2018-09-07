@@ -1,4 +1,9 @@
 <?php
+use Customers\Customers;
+use Schedule\Schedule;
+use Model\Model;
+use Objects\Objects;
+use Realtors\Realtors;
 
 class Model_Schedule extends Model
 {

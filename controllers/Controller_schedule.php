@@ -1,8 +1,9 @@
 <?php
+use Controller\Controller;
+use View\View;
 
 class Controller_Schedule extends Controller
 {
-
     function __construct()
     {
         $this->model = new Model_Schedule();

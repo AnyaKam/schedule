@@ -1,4 +1,5 @@
 <?php
+namespace Objects;
 
 class Objects {
     public $id = '';
